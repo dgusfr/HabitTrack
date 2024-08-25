@@ -17,9 +17,17 @@ main {
   margin: 0 auto;
 }
 
-h1 {
-  text-align: center;
-  color: #333;
+h1,
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #555;
 }
 
 header {
