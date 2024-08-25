@@ -74,8 +74,13 @@ footer {
   width: 100%;
 }
 
-/* Base Styles */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    margin: 0;
+  }
 
-/* Layout Styles */
-
-/* Components Styles */
+  nav ul li {
+    margin: 10px 0;
+  }
+}
