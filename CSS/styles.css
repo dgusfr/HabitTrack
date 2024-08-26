@@ -160,12 +160,12 @@ footer p {
 }
 
 @media (max-width: 768px) {
-  nav ul {
+  #habit-form {
     flex-direction: column;
-    margin: 0;
   }
 
-  nav ul li {
-    margin: 10px 0;
+  #habits li {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
