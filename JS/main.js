@@ -31,3 +31,14 @@ document.getElementById("habits").addEventListener("change", function (event) {
     habitItem.classList.toggle("completed");
   }
 });
+
+function addHabit(habitName, habitGoal) {
+  const habitList = document.getElementById("habits");
+  const newHabit = document.createElement("li");
+  newHabit.innerHTML = `
+      <input type="checkbox" class="habit-complete">
+      <span class="habit-name">${habitName}</span> 
+      <span class="habit-goal">${habitGoal} times/day</span>
+  `;
+  habitList.appendChild(newHabit);
+}
