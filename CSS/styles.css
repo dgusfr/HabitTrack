@@ -149,6 +149,11 @@ footer p {
   font-size: 14px;
 }
 
+.habit-complete {
+  margin-right: 15px;
+  transform: scale(1.5);
+}
+
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
