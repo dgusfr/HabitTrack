@@ -24,3 +24,10 @@ document
 
     document.getElementById("habit-form").reset();
   });
+
+document.getElementById("habits").addEventListener("change", function (event) {
+  if (event.target.classList.contains("habit-complete")) {
+    const habitItem = event.target.parentElement;
+    habitItem.classList.toggle("completed");
+  }
+});
