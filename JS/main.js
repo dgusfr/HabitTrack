@@ -40,5 +40,6 @@ function addHabit(habitName, habitGoal) {
       <span class="habit-name">${habitName}</span> 
       <span class="habit-goal">${habitGoal} times/day</span>
   `;
+
   habitList.appendChild(newHabit);
 }
