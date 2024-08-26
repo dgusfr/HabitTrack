@@ -154,6 +154,11 @@ footer p {
   transform: scale(1.5);
 }
 
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
