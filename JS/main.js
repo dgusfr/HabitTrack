@@ -17,5 +17,10 @@ document
       habitList.appendChild(newHabit);
     }
 
+    if (!habitName || !habitGoal || habitGoal <= 0) {
+      alert("Please enter a valid habit name and goal.");
+      return;
+    }
+
     document.getElementById("habit-form").reset();
   });
