@@ -122,6 +122,33 @@ footer p {
   color: #333;
 }
 
+#habits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#habits li {
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#habits li .habit-name {
+  font-weight: bold;
+  color: #333;
+}
+
+#habits li .habit-goal {
+  color: #555;
+  font-size: 14px;
+}
+
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
