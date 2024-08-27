@@ -177,6 +177,21 @@ footer p {
   align-items: center;
 }
 
+#reset-habits {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ffc107;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#reset-habits:hover {
+  background-color: #e0a800;
+}
+
 header {
   position: fixed;
   top: 0;
