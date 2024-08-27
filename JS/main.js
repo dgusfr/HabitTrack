@@ -57,5 +57,5 @@ function addHabit(habitName, habitGoal) {
 
 function resetHabits() {
   const habits = document.getElementById("habits");
-  habits.innerHTML = ""; // Remove todos os hábitos da lista
+  habits.innerHTML = "";
 }
