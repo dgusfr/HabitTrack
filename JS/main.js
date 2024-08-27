@@ -9,6 +9,8 @@ document.getElementById("habits").addEventListener("click", function (event) {
   }
 });
 
+document.getElementById("reset-habits").addEventListener("click", resetHabits);
+
 document
   .getElementById("habit-form")
   .addEventListener("submit", function (event) {
