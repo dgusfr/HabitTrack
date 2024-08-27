@@ -38,9 +38,11 @@ function addHabit(habitName, habitGoal) {
   const habitId = Date.now(); // Adicionando um ID único baseado no timestamp
   newHabit.setAttribute("data-id", habitId);
   newHabit.innerHTML = `
-      <input type="checkbox" class="habit-complete">
-      <span class="habit-name">${habitName}</span> 
-      <span class="habit-goal">${habitGoal} times/day</span>
-  `;
+    <input type="checkbox" class="habit-complete">
+    <span class="habit-name">${habitName}</span> 
+    <span class="habit-goal">${habitGoal} times/day</span>
+    <button class="remove-habit">Remove</button>
+`;
+
   habitList.appendChild(newHabit);
 }
