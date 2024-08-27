@@ -159,6 +159,13 @@ footer p {
   color: #888;
 }
 
+#habit-placeholder {
+  text-align: center;
+  color: #666;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
 @media (max-width: 768px) {
   #habit-form {
     flex-direction: column;
