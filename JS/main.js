@@ -2,6 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("HabitTrack is ready!");
 });
 
+document.getElementById("habits").addEventListener("click", function (event) {
+  if (event.target.classList.contains("remove-habit")) {
+    const habitItem = event.target.parentElement;
+    habitItem.remove();
+  }
+});
+
 document
   .getElementById("habit-form")
   .addEventListener("submit", function (event) {
