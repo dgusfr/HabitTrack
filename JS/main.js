@@ -50,3 +50,19 @@ function addHabit(habitName, habitGoal, habitCategory) {
   `;
   habitList.appendChild(newHabit);
 }
+
+document
+  .getElementById("category-filter")
+  .addEventListener("change", function (event) {
+    const selectedCategory = event.target.value;
+    const habitItems = document.querySelectorAll("#habits li");
+
+    habitItems.forEach((item) => {
+      const itemCategory = item.querySelector(".habit-category").textContent;
+      if (selectedCategory === "" || itemCategory === selectedCategory) {
+        item.style.display = "flex";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  });
