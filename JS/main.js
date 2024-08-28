@@ -41,7 +41,7 @@ document.getElementById("habits").addEventListener("change", function (event) {
   }
 });
 
-function addHabit(habitName, habitGoal) {
+function addHabit(habitName, habitGoal, habitCategory) {
   const habitList = document.getElementById("habits");
   const habitId = Date.now();
   const newHabit = document.createElement("li");
@@ -50,12 +50,8 @@ function addHabit(habitName, habitGoal) {
       <input type="checkbox" class="habit-complete">
       <span class="habit-name">${habitName}</span> 
       <span class="habit-goal">${habitGoal} times/day</span>
+      <span class="habit-category">${habitCategory}</span>
       <button class="remove-habit">Remove</button>
   `;
   habitList.appendChild(newHabit);
-}
-
-function resetHabits() {
-  const habits = document.getElementById("habits");
-  habits.innerHTML = "";
 }
