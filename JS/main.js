@@ -56,7 +56,6 @@ document
   .addEventListener("change", function (event) {
     const selectedCategory = event.target.value;
     const habitItems = document.querySelectorAll("#habits li");
-    //teste
     habitItems.forEach((item) => {
       const itemCategory = item.querySelector(".habit-category").textContent;
       if (selectedCategory === "" || itemCategory === selectedCategory) {
@@ -65,4 +64,20 @@ document
         item.style.display = "none";
       }
     });
+  });
+
+function filterHabitsByCategory(category) {
+  const habitItems = document.querySelectorAll("#habits li");
+
+  habitItems.forEach((item) => {
+    const itemCategory = item.querySelector(".habit-category").textContent;
+    item.style.display =
+      category === "" || itemCategory === category ? "flex" : "none";
+  });
+}
+
+document
+  .getElementById("category-filter")
+  .addEventListener("change", function (event) {
+    filterHabitsByCategory(event.target.value);
   });
