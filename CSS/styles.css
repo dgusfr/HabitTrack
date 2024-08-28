@@ -169,6 +169,21 @@ footer p {
   transform: scale(1.5);
 }
 
+#filter-habits {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#category-filter {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
 .completed {
   text-decoration: line-through;
   color: #888;
