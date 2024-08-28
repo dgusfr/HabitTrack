@@ -68,16 +68,19 @@ document
 
 function filterHabitsByCategory(category) {
   const habitItems = document.querySelectorAll("#habits li");
+  let hasVisibleItems = false;
 
   habitItems.forEach((item) => {
     const itemCategory = item.querySelector(".habit-category").textContent;
-    item.style.display =
-      category === "" || itemCategory === category ? "flex" : "none";
+    if (category === "" || itemCategory === category) {
+      item.style.display = "flex";
+      hasVisibleItems = true;
+    } else {
+      item.style.display = "none";
+    }
   });
-}
 
-document
-  .getElementById("category-filter")
-  .addEventListener("change", function (event) {
-    filterHabitsByCategory(event.target.value);
-  });
+  if (!hasVisibleItems) {
+    alert("No habits found for the selected category.");
+  }
+}
