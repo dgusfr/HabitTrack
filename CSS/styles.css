@@ -137,6 +137,12 @@ footer p {
   border-radius: 5px;
 }
 
+.habit-category {
+  font-size: 14px;
+  color: #007bff;
+  margin-left: 15px;
+}
+
 #habits li {
   background-color: #f9f9f9;
   margin-bottom: 10px;
