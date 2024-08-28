@@ -230,12 +230,11 @@ header {
 }
 
 @media (max-width: 768px) {
-  #habit-form {
-    flex-direction: column;
+  #filter-habits {
+    padding: 10px;
   }
 
-  #habits li {
-    flex-direction: column;
-    align-items: flex-start;
+  #category-filter {
+    width: 100%;
   }
 }
