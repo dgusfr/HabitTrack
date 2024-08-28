@@ -229,6 +229,14 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.habit-category {
+  padding: 3px 5px;
+  border-radius: 3px;
+  background-color: #e2e6ea;
+  color: #333;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
   #filter-habits {
     padding: 10px;
