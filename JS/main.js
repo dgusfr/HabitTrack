@@ -56,7 +56,7 @@ document
   .addEventListener("change", function (event) {
     const selectedCategory = event.target.value;
     const habitItems = document.querySelectorAll("#habits li");
-
+    //teste
     habitItems.forEach((item) => {
       const itemCategory = item.querySelector(".habit-category").textContent;
       if (selectedCategory === "" || itemCategory === selectedCategory) {
