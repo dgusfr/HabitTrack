@@ -18,17 +18,12 @@ document
 
     const habitName = document.getElementById("habit-name").value;
     const habitGoal = document.getElementById("habit-goal").value;
+    const habitCategory = document.getElementById("habit-category").value;
 
-    if (habitName && habitGoal) {
-      const habitList = document.getElementById("habits");
-      const newHabit = document.createElement("li");
-      newHabit.innerHTML = `<span class="habit-name">${habitName}</span> <span class="habit-goal">${habitGoal} times/day</span>`;
-      habitList.appendChild(newHabit);
-    }
-
-    if (!habitName || !habitGoal || habitGoal <= 0) {
-      alert("Please enter a valid habit name and goal.");
-      return;
+    if (habitName && habitGoal && habitCategory) {
+      addHabit(habitName, habitGoal, habitCategory);
+    } else {
+      alert("Please fill in all fields.");
     }
 
     document.getElementById("habit-form").reset();
