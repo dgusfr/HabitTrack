@@ -86,3 +86,21 @@ function filterHabitsByCategory(category) {
     alert("No habits found for the selected category.");
   }
 }
+
+document
+  .getElementById("start-date-filter")
+  .addEventListener("change", function (event) {
+    const selectedDate = event.target.value;
+    const habitItems = document.querySelectorAll("#habits li");
+
+    habitItems.forEach((item) => {
+      const itemStartDate = item
+        .querySelector(".habit-start-date")
+        .textContent.replace("Start: ", "");
+      if (selectedDate === "" || itemStartDate === selectedDate) {
+        item.style.display = "flex";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  });
