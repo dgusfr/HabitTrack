@@ -104,3 +104,21 @@ document
       }
     });
   });
+
+function filterHabitsByStartDate(date) {
+  const habitItems = document.querySelectorAll("#habits li");
+
+  habitItems.forEach((item) => {
+    const itemStartDate = item
+      .querySelector(".habit-start-date")
+      .textContent.replace("Start: ", "");
+    item.style.display =
+      date === "" || itemStartDate === date ? "flex" : "none";
+  });
+}
+
+document
+  .getElementById("start-date-filter")
+  .addEventListener("change", function (event) {
+    filterHabitsByStartDate(event.target.value);
+  });
