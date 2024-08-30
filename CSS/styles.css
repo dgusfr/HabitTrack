@@ -266,6 +266,12 @@ header {
   font-weight: bold;
 }
 
+.remove-habit {
+  margin-left: 15px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
 @media (max-width: 768px) {
   #filter-habits {
     padding: 10px;
