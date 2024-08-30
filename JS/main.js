@@ -19,9 +19,10 @@ document
     const habitName = document.getElementById("habit-name").value;
     const habitGoal = document.getElementById("habit-goal").value;
     const habitCategory = document.getElementById("habit-category").value;
+    const habitStartDate = document.getElementById("habit-start-date").value;
 
-    if (habitName && habitGoal && habitCategory) {
-      addHabit(habitName, habitGoal, habitCategory);
+    if (habitName && habitGoal && habitCategory && habitStartDate) {
+      addHabit(habitName, habitGoal, habitCategory, habitStartDate);
     } else {
       alert("Please fill in all fields.");
     }
