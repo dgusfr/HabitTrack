@@ -239,6 +239,13 @@ header {
   font-weight: bold;
 }
 
+#start-date-filter {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
 .remove-habit {
   margin-left: 15px;
   padding: 5px 10px;
