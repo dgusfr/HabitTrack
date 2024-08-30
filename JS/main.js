@@ -122,3 +122,24 @@ document
   .addEventListener("change", function (event) {
     filterHabitsByStartDate(event.target.value);
   });
+
+function filterHabitsByStartDate(date) {
+  const habitItems = document.querySelectorAll("#habits li");
+  let hasVisibleItems = false;
+
+  habitItems.forEach((item) => {
+    const itemStartDate = item
+      .querySelector(".habit-start-date")
+      .textContent.replace("Start: ", "");
+    if (date === "" || itemStartDate === date) {
+      item.style.display = "flex";
+      hasVisibleItems = true;
+    } else {
+      item.style.display = "none";
+    }
+  });
+
+  if (!hasVisibleItems) {
+    alert("No habits found for the selected start date.");
+  }
+}
