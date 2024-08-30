@@ -258,6 +258,14 @@ header {
   margin-left: 15px;
 }
 
+.habit-start-date {
+  padding: 3px 5px;
+  border-radius: 3px;
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
   #filter-habits {
     padding: 10px;
