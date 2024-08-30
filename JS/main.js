@@ -36,7 +36,7 @@ document.getElementById("habits").addEventListener("change", function (event) {
   }
 });
 
-function addHabit(habitName, habitGoal, habitCategory) {
+function addHabit(habitName, habitGoal, habitCategory, habitStartDate) {
   const habitList = document.getElementById("habits");
   const habitId = Date.now();
   const newHabit = document.createElement("li");
@@ -46,6 +46,7 @@ function addHabit(habitName, habitGoal, habitCategory) {
       <span class="habit-name">${habitName}</span> 
       <span class="habit-goal">${habitGoal} times/day</span>
       <span class="habit-category">${habitCategory}</span>
+      <span class="habit-start-date">Start: ${habitStartDate}</span>
       <button class="remove-habit">Remove</button>
   `;
   habitList.appendChild(newHabit);
