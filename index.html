@@ -1,95 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HabitTrack - Your Habit Tracker</title>
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-
+  <title>HabitTrack</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <header>
-    <nav>
-      <h1>HabitTrack</h1>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Profile</a></li>
-      </ul>
-    </nav>
+    <h1>HabitTrack</h1>
+    <button id="menu-toggle">Menu</button>
   </header>
-  <h1>Welcome to HabitTrack</h1>
+
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Habits</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </nav>
+
   <main>
+    <section id="habit-form">
+      <h2>Add New Habit</h2>
+      <label for="habit-name">Habit Name:</label>
+      <input type="text" id="habit-name">
+      <label for="habit-start-date">Start Date:</label>
+      <input type="date" id="habit-start-date">
+      <button id="add-habit">Add Habit</button>
+    </section>
+
     <section id="habit-list">
       <h2>Your Habits</h2>
       <ul id="habits">
-        <li>
-          <input type="checkbox" class="habit-complete">
-          <span class="habit-name">Habit Name</span>
-          <span class="habit-goal">3 times/day</span>
-        </li>
+        <!-- Habits will be dynamically added here -->
       </ul>
     </section>
-    <section id="create-habit">
-      <button id="reset-habits">Reset All Habits</button>
-      <h2>Create a New Habit</h2>
-      <form id="habit-form">
-        <input type="text" id="habit-name" placeholder="Habit Name" required>
-        <input type="number" id="habit-goal" placeholder="Goal (times per day)" required>
-        <label for="habit-start-date">Start Date</label>
-        <input type="date" id="habit-start-date" required>
-        <input type="date" id="start-date-filter" placeholder="Filter by Start Date">
 
-        <button type="submit">Add Habit</button>
-      </form>
+    <section id="habit-visualization">
+      <h3>View Habits by Date</h3>
+      <label for="view-date">Select Date:</label>
+      <input type="date" id="view-date" placeholder="Select a date" aria-label="Select a date to view habits">
+      <button id="clear-view">Clear View</button>
+      <ul id="habits-by-date"></ul>
     </section>
-    <section id="habit-placeholder">
-      <p>No habits yet. Start by adding a new habit!</p>
-      <button class="delete-habit">Delete</button>
-    </section>
-    <label for="habit-category">Category</label>
-    <select id="habit-category" required>
-      <option value="">Select Category</option>
-      <option value="Fitness">Fitness</option>
-      <option value="Work">Work</option>
-      <option value="Personal">Personal</option>
-    </select>
-    <section id="filter-habits">
-      <h2>Filter Habits</h2>
-      <select id="category-filter">
-        <option value="">All Categories</option>
-        <option value="Fitness">Fitness</option>
-        <option value="Work">Work</option>
-        <option value="Personal">Personal</option>
-      </select>
-      <section id="filter-habits">
-        <label for="start-date-filter">Filter by Start Date</label>
-        <input type="date" id="start-date-filter">
-      </section>
-      <section id="habit-visualization">
-        <h3>View Habits by Date</h3>
-        <label for="view-date">Select Date:</label>
-        <input type="date" id="view-date" placeholder="Select a date">
-        <input type="date" id="view-date">
-        <ul id="habits-by-date"></ul>
-        <button id="clear-view">Clear View</button>
-        <input type="date" id="view-date" aria-label="Select a date to view habits">
-
-
-      </section>
-
-
-    </section>
-
   </main>
-  <footer>
-    <p>&copy; 2024 HabitTrack. All rights reserved.</p>
-  </footer>
-  <script src="js/main.js"></script>
+
+  <script src="main.js"></script>
 </body>
 
 </html>
