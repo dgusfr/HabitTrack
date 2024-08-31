@@ -272,6 +272,23 @@ header {
   border-radius: 5px;
 }
 
+#habit-visualization {
+  margin-top: 20px;
+}
+
+#habits-by-date {
+  list-style-type: none;
+  padding: 0;
+}
+
+#habits-by-date li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
 @media (max-width: 768px) {
   #filter-habits {
     padding: 10px;
