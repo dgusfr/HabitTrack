@@ -289,6 +289,16 @@ header {
   border-radius: 5px;
 }
 
+#clear-view {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   #filter-habits {
     padding: 10px;
