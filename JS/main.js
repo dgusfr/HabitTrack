@@ -171,3 +171,18 @@ document
   .addEventListener("change", function (event) {
     viewHabitsByDate(event.target.value);
   });
+
+function clearHabitVisualization() {
+  document.getElementById("habits-by-date").innerHTML = "";
+  document.getElementById("view-date").value = "";
+}
+
+document
+  .getElementById("view-date")
+  .addEventListener("change", function (event) {
+    if (event.target.value === "") {
+      clearHabitVisualization();
+    } else {
+      viewHabitsByDate(event.target.value);
+    }
+  });
