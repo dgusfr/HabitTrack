@@ -143,3 +143,31 @@ function filterHabitsByStartDate(date) {
     alert("No habits found for the selected start date.");
   }
 }
+
+function viewHabitsByDate(date) {
+  const habitItems = document.querySelectorAll("#habits li");
+  const habitsByDateList = document.getElementById("habits-by-date");
+  habitsByDateList.innerHTML = "";
+
+  habitItems.forEach((item) => {
+    const itemStartDate = item
+      .querySelector(".habit-start-date")
+      .textContent.replace("Start: ", "");
+    if (itemStartDate === date) {
+      const habitClone = item.cloneNode(true);
+      habitsByDateList.appendChild(habitClone);
+    }
+  });
+
+  if (habitsByDateList.children.length === 0) {
+    const noHabitsMessage = document.createElement("li");
+    noHabitsMessage.textContent = "No habits found for the selected date.";
+    habitsByDateList.appendChild(noHabitsMessage);
+  }
+}
+
+document
+  .getElementById("view-date")
+  .addEventListener("change", function (event) {
+    viewHabitsByDate(event.target.value);
+  });
