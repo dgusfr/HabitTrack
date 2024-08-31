@@ -300,11 +300,15 @@ header {
 }
 
 @media (max-width: 768px) {
-  #filter-habits {
+  #habit-visualization {
     padding: 10px;
   }
 
-  #start-date-filter {
+  #habits-by-date li {
+    padding: 8px;
+  }
+
+  #clear-view {
     width: 100%;
   }
 }
