@@ -222,3 +222,13 @@ document.getElementById("add-habit").addEventListener("click", function () {
     document.getElementById("habit-name").value = "";
   }
 });
+
+// Carrega hábitos do localStorage ao carregar a página
+window.addEventListener("load", function () {
+  const habits = JSON.parse(localStorage.getItem("habits")) || [];
+  habits.forEach((habit) => {
+    const li = document.createElement("li");
+    li.textContent = habit;
+    document.getElementById("habits").appendChild(li);
+  });
+});
