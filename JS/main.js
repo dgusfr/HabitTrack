@@ -263,3 +263,16 @@ document
 
 // Chama a função de atualização ao carregar a página
 window.addEventListener("load", updateEmptyMessage);
+
+// Adiciona confirmação antes de remover um hábito
+document
+  .getElementById("habits")
+  .addEventListener("dblclick", function (event) {
+    if (event.target.tagName === "LI") {
+      if (confirm("Are you sure you want to remove this habit?")) {
+        event.target.remove();
+        saveHabits();
+        updateEmptyMessage();
+      }
+    }
+  });
