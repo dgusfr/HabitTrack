@@ -15,6 +15,15 @@ document.getElementById("clear-view").addEventListener("click", function () {
   clearHabitVisualization();
 });
 
+// Adiciona evento para remover hábito ao clicar duas vezes
+document
+  .getElementById("habits")
+  .addEventListener("dblclick", function (event) {
+    if (event.target.tagName === "LI") {
+      event.target.remove();
+    }
+  });
+
 document
   .getElementById("habit-form")
   .addEventListener("submit", function (event) {
