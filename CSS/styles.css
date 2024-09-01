@@ -312,6 +312,11 @@ header {
   }
 }
 
+#habits li:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   #habit-visualization {
     padding: 10px;
