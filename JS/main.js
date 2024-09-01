@@ -50,21 +50,21 @@ document.getElementById("habits").addEventListener("change", function (event) {
   }
 });
 
-function addHabit(habitName, habitGoal, habitCategory, habitStartDate) {
-  const habitList = document.getElementById("habits");
-  const habitId = Date.now();
-  const newHabit = document.createElement("li");
-  newHabit.setAttribute("data-id", habitId);
-  newHabit.innerHTML = `
-      <input type="checkbox" class="habit-complete">
-      <span class="habit-name">${habitName}</span> 
-      <span class="habit-goal">${habitGoal} times/day</span>
-      <span class="habit-category">${habitCategory}</span>
-      <span class="habit-start-date">Start: ${habitStartDate}</span>
-      <button class="remove-habit">Remove</button>
-  `;
-  habitList.appendChild(newHabit);
+function addHabit(habitName) {
+  const li = document.createElement("li");
+  li.textContent = habitName;
+  document.getElementById("habits").appendChild(li);
+  saveHabits();
+  updateEmptyMessage();
 }
+
+document.getElementById("add-habit").addEventListener("click", function () {
+  const habitName = document.getElementById("habit-name").value;
+  if (habitName) {
+    addHabit(habitName);
+    document.getElementById("habit-name").value = "";
+  }
+});
 
 document
   .getElementById("category-filter")
