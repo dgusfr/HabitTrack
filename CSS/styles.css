@@ -317,6 +317,13 @@ header {
   cursor: pointer;
 }
 
+/* Oculta a mensagem de lista vazia por padrão */
+#empty-message {
+  display: none;
+  color: #777;
+  font-style: italic;
+}
+
 @media (max-width: 768px) {
   #habit-visualization {
     padding: 10px;
