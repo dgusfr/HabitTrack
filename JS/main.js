@@ -15,7 +15,6 @@ document.getElementById("clear-view").addEventListener("click", function () {
   clearHabitVisualization();
 });
 
-// Adiciona evento para remover hábito ao clicar duas vezes
 document
   .getElementById("habits")
   .addEventListener("dblclick", function (event) {
@@ -202,7 +201,6 @@ document
     }
   });
 
-// Salva hábitos no localStorage
 function saveHabits() {
   const habits = [];
   document
@@ -211,7 +209,6 @@ function saveHabits() {
   localStorage.setItem("habits", JSON.stringify(habits));
 }
 
-// Modifica o evento de adicionar hábito para salvar no localStorage
 document.getElementById("add-habit").addEventListener("click", function () {
   const habitName = document.getElementById("habit-name").value;
   if (habitName) {
@@ -223,7 +220,6 @@ document.getElementById("add-habit").addEventListener("click", function () {
   }
 });
 
-// Carrega hábitos do localStorage ao carregar a página
 window.addEventListener("load", function () {
   const habits = JSON.parse(localStorage.getItem("habits")) || [];
   habits.forEach((habit) => {
@@ -233,7 +229,6 @@ window.addEventListener("load", function () {
   });
 });
 
-// Atualiza a mensagem de lista vazia quando um hábito é adicionado ou removido
 function updateEmptyMessage() {
   const emptyMessage = document.getElementById("empty-message");
   const habitsList = document.getElementById("habits");
@@ -244,13 +239,10 @@ function updateEmptyMessage() {
   }
 }
 
-// Modifica o evento de adicionar hábito para atualizar a mensagem
 document.getElementById("add-habit").addEventListener("click", function () {
-  // Código existente...
   updateEmptyMessage();
 });
 
-// Modifica o evento de remover hábito para atualizar a mensagem
 document
   .getElementById("habits")
   .addEventListener("dblclick", function (event) {
@@ -261,10 +253,8 @@ document
     }
   });
 
-// Chama a função de atualização ao carregar a página
 window.addEventListener("load", updateEmptyMessage);
 
-// Adiciona confirmação antes de remover um hábito
 document
   .getElementById("habits")
   .addEventListener("dblclick", function (event) {
@@ -277,7 +267,6 @@ document
     }
   });
 
-// Adiciona funcionalidade para limpar todos os hábitos
 document.getElementById("clear-habits").addEventListener("click", function () {
   if (confirm("Are you sure you want to clear all habits?")) {
     document.getElementById("habits").innerHTML = "";
