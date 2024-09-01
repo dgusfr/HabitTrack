@@ -232,3 +232,34 @@ window.addEventListener("load", function () {
     document.getElementById("habits").appendChild(li);
   });
 });
+
+// Atualiza a mensagem de lista vazia quando um hábito é adicionado ou removido
+function updateEmptyMessage() {
+  const emptyMessage = document.getElementById("empty-message");
+  const habitsList = document.getElementById("habits");
+  if (habitsList.children.length === 0) {
+    emptyMessage.style.display = "block";
+  } else {
+    emptyMessage.style.display = "none";
+  }
+}
+
+// Modifica o evento de adicionar hábito para atualizar a mensagem
+document.getElementById("add-habit").addEventListener("click", function () {
+  // Código existente...
+  updateEmptyMessage();
+});
+
+// Modifica o evento de remover hábito para atualizar a mensagem
+document
+  .getElementById("habits")
+  .addEventListener("dblclick", function (event) {
+    if (event.target.tagName === "LI") {
+      event.target.remove();
+      saveHabits();
+      updateEmptyMessage();
+    }
+  });
+
+// Chama a função de atualização ao carregar a página
+window.addEventListener("load", updateEmptyMessage);
