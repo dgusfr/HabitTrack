@@ -276,3 +276,12 @@ document
       }
     }
   });
+
+// Adiciona funcionalidade para limpar todos os hábitos
+document.getElementById("clear-habits").addEventListener("click", function () {
+  if (confirm("Are you sure you want to clear all habits?")) {
+    document.getElementById("habits").innerHTML = "";
+    saveHabits();
+    updateEmptyMessage();
+  }
+});
