@@ -201,3 +201,24 @@ document
       viewHabitsByDate(event.target.value);
     }
   });
+
+// Salva hábitos no localStorage
+function saveHabits() {
+  const habits = [];
+  document
+    .querySelectorAll("#habits li")
+    .forEach((li) => habits.push(li.textContent));
+  localStorage.setItem("habits", JSON.stringify(habits));
+}
+
+// Modifica o evento de adicionar hábito para salvar no localStorage
+document.getElementById("add-habit").addEventListener("click", function () {
+  const habitName = document.getElementById("habit-name").value;
+  if (habitName) {
+    const li = document.createElement("li");
+    li.textContent = habitName;
+    document.getElementById("habits").appendChild(li);
+    saveHabits();
+    document.getElementById("habit-name").value = "";
+  }
+});
