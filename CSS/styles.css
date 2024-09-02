@@ -357,6 +357,12 @@ header {
   box-sizing: border-box; /* Inclui padding no cálculo de largura */
 }
 
+#habit-category:active,
+#habit-category:focus {
+  border-color: #0056b3;
+  outline: none;
+}
+
 /* Estilo para o rodapé */
 footer {
   text-align: center;
