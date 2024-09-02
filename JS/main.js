@@ -232,11 +232,8 @@ window.addEventListener("load", function () {
 function updateEmptyMessage() {
   const emptyMessage = document.getElementById("empty-message");
   const habitsList = document.getElementById("habits");
-  if (habitsList.children.length === 0) {
-    emptyMessage.style.display = "block";
-  } else {
-    emptyMessage.style.display = "none";
-  }
+  emptyMessage.style.display =
+    habitsList.children.length === 0 ? "block" : "none";
 }
 
 document.getElementById("add-habit").addEventListener("click", function () {
