@@ -287,3 +287,25 @@ document
       document.getElementById("new-category-name").value = "";
     }
   });
+
+function saveCategories() {
+  const categories = Array.from(
+    document.getElementById("habit-category").options
+  ).map((option) => option.value);
+  localStorage.setItem("categories", JSON.stringify(categories));
+}
+
+// Atualiza a função de adição de categoria para incluir salvamento
+document
+  .getElementById("add-category-btn")
+  .addEventListener("click", function () {
+    const categoryName = document.getElementById("new-category-name").value;
+    if (categoryName) {
+      const categoryOption = document.createElement("option");
+      categoryOption.value = categoryName;
+      categoryOption.textContent = categoryName;
+      document.getElementById("habit-category").appendChild(categoryOption);
+      document.getElementById("new-category-name").value = "";
+      saveCategories();
+    }
+  });
