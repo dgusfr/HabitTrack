@@ -309,3 +309,15 @@ document
       saveCategories();
     }
   });
+
+window.addEventListener("load", function () {
+  const savedCategories = JSON.parse(localStorage.getItem("categories"));
+  if (savedCategories) {
+    savedCategories.forEach((category) => {
+      const categoryOption = document.createElement("option");
+      categoryOption.value = category;
+      categoryOption.textContent = category;
+      document.getElementById("habit-category").appendChild(categoryOption);
+    });
+  }
+});
