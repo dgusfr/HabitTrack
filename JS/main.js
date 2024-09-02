@@ -358,3 +358,13 @@ function handleCategoryInput() {
 document
   .getElementById("add-category-btn")
   .addEventListener("click", handleCategoryInput);
+
+let categories = JSON.parse(localStorage.getItem("categories")) || [];
+let habits = JSON.parse(localStorage.getItem("habits")) || [];
+
+function updateLocalStorage() {
+  localStorage.setItem("categories", JSON.stringify(categories));
+  localStorage.setItem("habits", JSON.stringify(habits));
+}
+
+// Usar as funções updateLocalStorage em eventos relevantes
