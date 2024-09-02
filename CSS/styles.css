@@ -351,6 +351,12 @@ header {
   margin-top: 5px;
 }
 
+#habit-category,
+#new-category-name {
+  width: calc(100% - 16px); /* Desconta padding */
+  box-sizing: border-box; /* Inclui padding no cálculo de largura */
+}
+
 /* Estilo para o rodapé */
 footer {
   text-align: center;
