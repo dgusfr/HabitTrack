@@ -1,27 +1,21 @@
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("HabitTrack is ready!");
-});
-
-document.getElementById("habits").addEventListener("click", function (event) {
-  if (event.target.classList.contains("remove-habit")) {
-    const habitItem = event.target.parentElement;
-    habitItem.remove();
-  }
-});
-
-document.getElementById("reset-habits").addEventListener("click", resetHabits);
-
-document.getElementById("clear-view").addEventListener("click", function () {
-  clearHabitVisualization();
-});
-
-document
-  .getElementById("habits")
-  .addEventListener("dblclick", function (event) {
-    if (event.target.tagName === "LI") {
-      event.target.remove();
-    }
+window.addEventListener("load", function () {
+  const savedHabits = JSON.parse(localStorage.getItem("habits")) || [];
+  savedHabits.forEach((habit) => {
+    const li = document.createElement("li");
+    li.textContent = habit;
+    document.getElementById("habits").appendChild(li);
   });
+  const savedCategories = JSON.parse(localStorage.getItem("categories"));
+  if (savedCategories) {
+    savedCategories.forEach((category) => {
+      const categoryOption = document.createElement("option");
+      categoryOption.value = category;
+      categoryOption.textContent = category;
+      document.getElementById("habit-category").appendChild(categoryOption);
+    });
+  }
+  updateEmptyMessage();
+});
 
 document
   .getElementById("habit-form")
@@ -42,164 +36,22 @@ document
     document.getElementById("habit-form").reset();
   });
 
-document.getElementById("habits").addEventListener("change", function (event) {
-  if (event.target.classList.contains("habit-complete")) {
-    const habitItem = event.target.parentElement;
-    habitItem.classList.toggle("completed");
-  }
-});
-
-function addHabit(habitName) {
-  const li = document.createElement("li");
-  li.textContent = habitName;
-  document.getElementById("habits").appendChild(li);
+function addHabit(habitName, habitGoal, habitCategory, habitStartDate) {
+  const habitList = document.getElementById("habits");
+  const habitId = Date.now();
+  const newHabit = document.createElement("li");
+  newHabit.setAttribute("data-id", habitId);
+  newHabit.innerHTML = `
+      <input type="checkbox" class="habit-complete">
+      <span class="habit-name">${habitName}</span> 
+      <span class="habit-goal">${habitGoal} times/day</span>
+      <span class="habit-category">${habitCategory}</span>
+      <span class="habit-start-date">Start: ${habitStartDate}</span>
+      <button class="remove-habit">Remove</button>
+  `;
+  habitList.appendChild(newHabit);
   saveHabits();
-  updateEmptyMessage();
 }
-
-document.getElementById("add-habit").addEventListener("click", function () {
-  const habitName = document.getElementById("habit-name").value;
-  if (habitName) {
-    addHabit(habitName);
-    document.getElementById("habit-name").value = "";
-  }
-});
-
-document
-  .getElementById("category-filter")
-  .addEventListener("change", function (event) {
-    const selectedCategory = event.target.value;
-    const habitItems = document.querySelectorAll("#habits li");
-    habitItems.forEach((item) => {
-      const itemCategory = item.querySelector(".habit-category").textContent;
-      if (selectedCategory === "" || itemCategory === selectedCategory) {
-        item.style.display = "flex";
-      } else {
-        item.style.display = "none";
-      }
-    });
-  });
-
-function filterHabitsByCategory(category) {
-  const habitItems = document.querySelectorAll("#habits li");
-  let hasVisibleItems = false;
-
-  habitItems.forEach((item) => {
-    const itemCategory = item.querySelector(".habit-category").textContent;
-    if (category === "" || itemCategory === category) {
-      item.style.display = "flex";
-      hasVisibleItems = true;
-    } else {
-      item.style.display = "none";
-    }
-  });
-
-  if (!hasVisibleItems) {
-    alert("No habits found for the selected category.");
-  }
-}
-
-document
-  .getElementById("start-date-filter")
-  .addEventListener("change", function (event) {
-    const selectedDate = event.target.value;
-    const habitItems = document.querySelectorAll("#habits li");
-
-    habitItems.forEach((item) => {
-      const itemStartDate = item
-        .querySelector(".habit-start-date")
-        .textContent.replace("Start: ", "");
-      if (selectedDate === "" || itemStartDate === selectedDate) {
-        item.style.display = "flex";
-      } else {
-        item.style.display = "none";
-      }
-    });
-  });
-
-function filterHabitsByStartDate(date) {
-  const habitItems = document.querySelectorAll("#habits li");
-
-  habitItems.forEach((item) => {
-    const itemStartDate = item
-      .querySelector(".habit-start-date")
-      .textContent.replace("Start: ", "");
-    item.style.display =
-      date === "" || itemStartDate === date ? "flex" : "none";
-  });
-}
-
-document
-  .getElementById("start-date-filter")
-  .addEventListener("change", function (event) {
-    filterHabitsByStartDate(event.target.value);
-  });
-
-function filterHabitsByStartDate(date) {
-  const habitItems = document.querySelectorAll("#habits li");
-  let hasVisibleItems = false;
-
-  habitItems.forEach((item) => {
-    const itemStartDate = item
-      .querySelector(".habit-start-date")
-      .textContent.replace("Start: ", "");
-    if (date === "" || itemStartDate === date) {
-      item.style.display = "flex";
-      hasVisibleItems = true;
-    } else {
-      item.style.display = "none";
-    }
-  });
-
-  if (!hasVisibleItems) {
-    alert("No habits found for the selected start date.");
-  }
-}
-
-function viewHabitsByDate(date) {
-  const habitItems = [...document.querySelectorAll("#habits li")];
-  const habitsByDateList = document.getElementById("habits-by-date");
-  habitsByDateList.innerHTML = "";
-
-  const filteredHabits = habitItems.filter(
-    (item) =>
-      item
-        .querySelector(".habit-start-date")
-        .textContent.replace("Start: ", "") === date
-  );
-
-  if (filteredHabits.length > 0) {
-    filteredHabits.forEach((item) => {
-      const habitClone = item.cloneNode(true);
-      habitsByDateList.appendChild(habitClone);
-    });
-  } else {
-    const noHabitsMessage = document.createElement("li");
-    noHabitsMessage.textContent = "No habits found for the selected date.";
-    habitsByDateList.appendChild(noHabitsMessage);
-  }
-}
-
-document
-  .getElementById("view-date")
-  .addEventListener("change", function (event) {
-    viewHabitsByDate(event.target.value);
-  });
-
-function clearHabitVisualization() {
-  document.getElementById("habits-by-date").innerHTML = "";
-  document.getElementById("view-date").value = "";
-}
-
-document
-  .getElementById("view-date")
-  .addEventListener("change", function (event) {
-    if (event.target.value === "") {
-      clearHabitVisualization();
-    } else {
-      viewHabitsByDate(event.target.value);
-    }
-  });
 
 function saveHabits() {
   const habits = [];
@@ -208,49 +60,6 @@ function saveHabits() {
     .forEach((li) => habits.push(li.textContent));
   localStorage.setItem("habits", JSON.stringify(habits));
 }
-
-document.getElementById("add-habit").addEventListener("click", function () {
-  const habitName = document.getElementById("habit-name").value;
-  if (habitName) {
-    const li = document.createElement("li");
-    li.textContent = habitName;
-    document.getElementById("habits").appendChild(li);
-    saveHabits();
-    document.getElementById("habit-name").value = "";
-  }
-});
-
-window.addEventListener("load", function () {
-  const habits = JSON.parse(localStorage.getItem("habits")) || [];
-  habits.forEach((habit) => {
-    const li = document.createElement("li");
-    li.textContent = habit;
-    document.getElementById("habits").appendChild(li);
-  });
-});
-
-function updateEmptyMessage() {
-  const emptyMessage = document.getElementById("empty-message");
-  const habitsList = document.getElementById("habits");
-  emptyMessage.style.display =
-    habitsList.children.length === 0 ? "block" : "none";
-}
-
-document.getElementById("add-habit").addEventListener("click", function () {
-  updateEmptyMessage();
-});
-
-document
-  .getElementById("habits")
-  .addEventListener("dblclick", function (event) {
-    if (event.target.tagName === "LI") {
-      event.target.remove();
-      saveHabits();
-      updateEmptyMessage();
-    }
-  });
-
-window.addEventListener("load", updateEmptyMessage);
 
 document
   .getElementById("habits")
@@ -264,23 +73,21 @@ document
     }
   });
 
-document.getElementById("clear-habits").addEventListener("click", function () {
-  if (confirm("Are you sure you want to clear all habits?")) {
-    document.getElementById("habits").innerHTML = "";
-    saveHabits();
-    updateEmptyMessage();
-  }
-});
+function updateEmptyMessage() {
+  const emptyMessage = document.getElementById("empty-message");
+  const habitsList = document.getElementById("habits");
+  emptyMessage.style.display =
+    habitsList.children.length === 0 ? "block" : "none";
+}
 
 document
   .getElementById("add-category-btn")
   .addEventListener("click", function () {
     const categoryName = document.getElementById("new-category-name").value;
     if (categoryName) {
-      const categoryOption = document.createElement("option");
-      categoryOption.value = categoryName;
-      categoryOption.textContent = categoryName;
-      document.getElementById("habit-category").appendChild(categoryOption);
+      const categoryOption = new Option(categoryName, categoryName);
+      document.getElementById("habit-category").add(categoryOption);
+      saveCategories();
       document.getElementById("new-category-name").value = "";
     }
   });
@@ -292,79 +99,32 @@ function saveCategories() {
   localStorage.setItem("categories", JSON.stringify(categories));
 }
 
-// Atualiza a função de adição de categoria para incluir salvamento
-document
-  .getElementById("add-category-btn")
-  .addEventListener("click", function () {
-    const categoryName = document.getElementById("new-category-name").value;
-    if (categoryName) {
-      const categoryOption = document.createElement("option");
-      categoryOption.value = categoryName;
-      categoryOption.textContent = categoryName;
-      document.getElementById("habit-category").appendChild(categoryOption);
-      document.getElementById("new-category-name").value = "";
-      saveCategories();
-    }
-  });
-
-window.addEventListener("load", function () {
-  const savedCategories = JSON.parse(localStorage.getItem("categories"));
-  if (savedCategories) {
-    savedCategories.forEach((category) => {
-      const categoryOption = document.createElement("option");
-      categoryOption.value = category;
-      categoryOption.textContent = category;
-      document.getElementById("habit-category").appendChild(categoryOption);
-    });
+document.getElementById("clear-habits").addEventListener("click", function () {
+  if (confirm("Are you sure you want to clear all habits?")) {
+    document.getElementById("habits").innerHTML = "";
+    saveHabits();
+    updateEmptyMessage();
   }
 });
 
-document
-  .getElementById("habit-category")
-  .addEventListener("change", function () {
-    const selectedCategory = this.value;
-    document.querySelectorAll("#habits li").forEach((li) => {
-      const liCategory = li.dataset.category;
-      li.style.display =
-        selectedCategory === liCategory || selectedCategory === "All"
-          ? ""
-          : "none";
-    });
+function viewHabitsByDate(date) {
+  const habitItems = document.querySelectorAll("#habits li");
+  const habitsByDateList = document.getElementById("habits-by-date");
+  habitsByDateList.innerHTML = "";
+
+  habitItems.forEach((item) => {
+    const itemStartDate = item
+      .querySelector(".habit-start-date")
+      .textContent.replace("Start: ", "");
+    if (itemStartDate === date) {
+      const habitClone = item.cloneNode(true);
+      habitsByDateList.appendChild(habitClone);
+    }
   });
 
-function handleCategoryInput() {
-  const categoryName = document.getElementById("new-category-name").value;
-  if (!categoryName) return;
-  const categoryOption = new Option(categoryName, categoryName);
-  document.getElementById("habit-category").add(categoryOption);
-  saveCategories();
-  document.getElementById("new-category-name").value = "";
+  if (habitsByDateList.children.length === 0) {
+    const noHabitsMessage = document.createElement("li");
+    noHabitsMessage.textContent = "No habits found for the selected date.";
+    habitsByDateList.appendChild(noHabitsMessage);
+  }
 }
-
-document
-  .getElementById("add-category-btn")
-  .addEventListener("click", handleCategoryInput);
-
-function handleCategoryInput() {
-  const categoryName = document.getElementById("new-category-name").value;
-  if (!categoryName) return;
-  const categoryOption = new Option(categoryName, categoryName);
-  document.getElementById("habit-category").add(categoryOption);
-  alert("Category added successfully!");
-  saveCategories();
-  document.getElementById("new-category-name").value = "";
-}
-
-document
-  .getElementById("add-category-btn")
-  .addEventListener("click", handleCategoryInput);
-
-let categories = JSON.parse(localStorage.getItem("categories")) || [];
-let habits = JSON.parse(localStorage.getItem("habits")) || [];
-
-function updateLocalStorage() {
-  localStorage.setItem("categories", JSON.stringify(categories));
-  localStorage.setItem("habits", JSON.stringify(habits));
-}
-
-// Usar as funções updateLocalStorage em eventos relevantes
