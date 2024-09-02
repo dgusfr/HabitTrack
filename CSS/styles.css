@@ -337,6 +337,20 @@ header {
   background-color: #ff1a1a;
 }
 
+#add-category {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#add-category input,
+#add-category button {
+  padding: 8px;
+  margin-top: 5px;
+}
+
 /* Estilo para o rodapé */
 footer {
   text-align: center;
