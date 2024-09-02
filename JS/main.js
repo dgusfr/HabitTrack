@@ -274,3 +274,16 @@ document.getElementById("clear-habits").addEventListener("click", function () {
     updateEmptyMessage();
   }
 });
+
+document
+  .getElementById("add-category-btn")
+  .addEventListener("click", function () {
+    const categoryName = document.getElementById("new-category-name").value;
+    if (categoryName) {
+      const categoryOption = document.createElement("option");
+      categoryOption.value = categoryName;
+      categoryOption.textContent = categoryName;
+      document.getElementById("habit-category").appendChild(categoryOption);
+      document.getElementById("new-category-name").value = "";
+    }
+  });
