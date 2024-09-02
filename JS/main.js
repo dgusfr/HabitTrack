@@ -318,3 +318,16 @@ window.addEventListener("load", function () {
     });
   }
 });
+
+document
+  .getElementById("habit-category")
+  .addEventListener("change", function () {
+    const selectedCategory = this.value;
+    document.querySelectorAll("#habits li").forEach((li) => {
+      const liCategory = li.dataset.category;
+      li.style.display =
+        selectedCategory === liCategory || selectedCategory === "All"
+          ? ""
+          : "none";
+    });
+  });
