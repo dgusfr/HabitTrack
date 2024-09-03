@@ -407,6 +407,12 @@ footer {
   box-sizing: border-box;
 }
 
+#habit-category:active,
+#habit-category:focus {
+  border-color: #0056b3;
+  outline: none;
+}
+
 @media (max-width: 768px) {
   #habit-visualization {
     padding: 10px;
