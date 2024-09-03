@@ -187,3 +187,16 @@ document
           : "none";
     });
   });
+
+function handleCategoryInput() {
+  const categoryName = document.getElementById("new-category-name").value;
+  if (!categoryName) return;
+  const categoryOption = new Option(categoryName, categoryName);
+  document.getElementById("habit-category").add(categoryOption);
+  saveCategories();
+  document.getElementById("new-category-name").value = "";
+}
+
+document
+  .getElementById("add-category-btn")
+  .addEventListener("click", handleCategoryInput);
