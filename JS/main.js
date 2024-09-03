@@ -149,7 +149,6 @@ function saveCategories() {
   localStorage.setItem("categories", JSON.stringify(categories));
 }
 
-// Atualiza a função de adição de categoria para incluir salvamento
 document
   .getElementById("add-category-btn")
   .addEventListener("click", function () {
