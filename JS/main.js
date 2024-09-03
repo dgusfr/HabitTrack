@@ -74,6 +74,7 @@ document
   });
 
 function updateEmptyMessage() {
+  const a = 2;
   const emptyMessage = document.getElementById("empty-message");
   const habitsList = document.getElementById("habits");
   emptyMessage.style.display =
