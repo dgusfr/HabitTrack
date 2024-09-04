@@ -130,6 +130,16 @@ footer {
   border-radius: 4px;
   cursor: pointer;
 }
+option[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 100%;
+  white-space: nowrap;
+  z-index: 20;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
 
 @media (max-width: 768px) {
   nav ul {
