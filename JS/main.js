@@ -179,3 +179,8 @@ document
       document.getElementById("new-category-name").value = "";
     }
   });
+
+newHabit.style.backgroundColor =
+  document.getElementById(
+    "habit-category"
+  ).selectedOptions[0].style.backgroundColor;
