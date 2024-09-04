@@ -165,3 +165,17 @@ function saveCategories() {
   }));
   localStorage.setItem("categories", JSON.stringify(categories));
 }
+
+document
+  .getElementById("add-category-btn")
+  .addEventListener("click", function () {
+    const categoryName = document.getElementById("new-category-name").value;
+    const categoryColor = document.getElementById("category-color").value;
+    if (categoryName) {
+      const categoryOption = new Option(categoryName, categoryName);
+      categoryOption.style.backgroundColor = categoryColor;
+      document.getElementById("habit-category").add(categoryOption);
+      saveCategories();
+      document.getElementById("new-category-name").value = "";
+    }
+  });
