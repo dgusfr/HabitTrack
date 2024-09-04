@@ -184,3 +184,9 @@ newHabit.style.backgroundColor =
   document.getElementById(
     "habit-category"
   ).selectedOptions[0].style.backgroundColor;
+
+document
+  .getElementById("habit-category")
+  .addEventListener("change", function () {
+    this.style.backgroundColor = this.selectedOptions[0].style.backgroundColor;
+  });
