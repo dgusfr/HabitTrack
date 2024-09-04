@@ -215,3 +215,5 @@ function addCategory(name, color) {
   categoryOption.title = `Color: ${color}`;
   document.getElementById("habit-category").add(categoryOption);
 }
+progressItem.style.backgroundColor =
+  habit.querySelector(".habit-category").style.backgroundColor;
