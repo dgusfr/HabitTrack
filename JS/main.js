@@ -190,3 +190,11 @@ document
   .addEventListener("change", function () {
     this.style.backgroundColor = this.selectedOptions[0].style.backgroundColor;
   });
+
+document
+  .getElementById("reset-category-form")
+  .addEventListener("click", function () {
+    document.getElementById("new-category-name").value = "";
+    document.getElementById("category-color").value = "#ff0000";
+    document.getElementById("habit-category").style.backgroundColor = "";
+  });
