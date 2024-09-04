@@ -198,3 +198,12 @@ document
     document.getElementById("category-color").value = "#ff0000";
     document.getElementById("habit-category").style.backgroundColor = "";
   });
+
+window.addEventListener("load", function () {
+  const savedCategories = JSON.parse(localStorage.getItem("categories")) || [];
+  savedCategories.forEach((cat) => {
+    const categoryOption = new Option(cat.name, cat.name);
+    categoryOption.style.backgroundColor = cat.color;
+    document.getElementById("habit-category").add(categoryOption);
+  });
+});
