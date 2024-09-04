@@ -209,3 +209,9 @@ window.addEventListener("load", function () {
 });
 
 categoryOption.title = `Color: ${categoryColor}`;
+function addCategory(name, color) {
+  const categoryOption = new Option(name, name);
+  categoryOption.style.backgroundColor = color;
+  categoryOption.title = `Color: ${color}`;
+  document.getElementById("habit-category").add(categoryOption);
+}
