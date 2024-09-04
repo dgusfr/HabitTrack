@@ -118,6 +118,9 @@ footer {
   padding: 5px 10px;
   cursor: pointer;
 }
+#category-color {
+  margin: 5px 0;
+}
 
 @media (max-width: 768px) {
   nav ul {
