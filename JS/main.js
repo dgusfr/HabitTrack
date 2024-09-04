@@ -145,3 +145,13 @@ function updateProgress() {
     progressList.appendChild(progressItem);
   });
 }
+function incrementProgress(button) {
+  const habitItem = button.closest("li");
+  const progressText = habitItem.querySelector(".progress-text");
+  let [current, total] = progressText.textContent.split("/").map(Number);
+  if (current < total) {
+    current += 1;
+    progressText.textContent = `${current}/${total}`;
+    updateLocalStorage(); // Atualiza o localStorage após mudança
+  }
+}
