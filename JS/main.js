@@ -207,3 +207,5 @@ window.addEventListener("load", function () {
     document.getElementById("habit-category").add(categoryOption);
   });
 });
+
+categoryOption.title = `Color: ${categoryColor}`;
