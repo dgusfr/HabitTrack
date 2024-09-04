@@ -155,3 +155,13 @@ function incrementProgress(button) {
     updateLocalStorage(); // Atualiza o localStorage após mudança
   }
 }
+
+function saveCategories() {
+  const categories = Array.from(
+    document.getElementById("habit-category").options
+  ).map((option) => ({
+    name: option.value,
+    color: option.dataset.color,
+  }));
+  localStorage.setItem("categories", JSON.stringify(categories));
+}
