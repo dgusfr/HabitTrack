@@ -23,6 +23,10 @@ nav ul {
   margin: 5px;
   cursor: pointer;
 }
+.habit-notification-enabled {
+  background-color: #ffcccb;
+  color: #d8000c;
+}
 
 nav ul li {
   margin: 0 15px;
