@@ -253,3 +253,11 @@ function sendNotification(habitName) {
     });
   }
 }
+document.addEventListener("DOMContentLoaded", function () {
+  if (
+    Notification.permission !== "denied" ||
+    Notification.permission === "default"
+  ) {
+    Notification.requestPermission();
+  }
+});
