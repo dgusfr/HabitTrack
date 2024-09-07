@@ -217,3 +217,31 @@ function addCategory(name, color) {
 }
 progressItem.style.backgroundColor =
   habit.querySelector(".habit-category").style.backgroundColor;
+
+function addHabit(
+  habitName,
+  habitGoal,
+  habitCategory,
+  habitStartDate,
+  habitFrequency,
+  enableNotification
+) {
+  const habitList = document.getElementById("habits");
+  const habitId = Date.now();
+  const newHabit = document.createElement("li");
+  newHabit.setAttribute("data-id", habitId);
+  newHabit.innerHTML = `
+        <input type="checkbox" class="habit-complete">
+        <span class="habit-name">${habitName}</span>
+        <span class="habit-goal">${habitGoal} times/day</span>
+        <span class="habit-category">${habitCategory}</span>
+        <span class="habit-start-date">Start: ${habitStartDate}</span>
+        <span class="habit-frequency">Frequency: ${habitFrequency} times/day</span>
+        <span class="habit-notification">${
+          enableNotification ? "Notifications Enabled" : "No Notifications"
+        }</span>
+        <button class="remove-habit">Remove</button>
+    `;
+  habitList.appendChild(newHabit);
+  saveHabits();
+}
