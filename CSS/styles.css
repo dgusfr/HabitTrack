@@ -11,6 +11,15 @@ header {
   padding: 10px 0;
   text-align: center;
 }
+.cancel-notification {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
 nav ul {
   list-style: none;
