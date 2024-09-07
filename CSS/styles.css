@@ -19,6 +19,10 @@ nav ul {
   justify-content: center;
   margin: 10px 0 0 0;
 }
+#habit-notification {
+  margin: 5px;
+  cursor: pointer;
+}
 
 nav ul li {
   margin: 0 15px;
