@@ -288,3 +288,10 @@ function remindAtIntervals(habitName, interval) {
     sendNotification(habitName);
   }, interval);
 }
+document
+  .getElementById("reminder-interval")
+  .addEventListener("change", function () {
+    const interval = this.value * 3600000; // Convert hours to milliseconds
+    const habitName = document.getElementById("habit-name").value;
+    remindAtIntervals(habitName, interval);
+  });
