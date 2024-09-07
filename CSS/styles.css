@@ -20,8 +20,15 @@ header {
   cursor: pointer;
   margin-top: 10px;
 }
+#reminder-interval {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  box-sizing: border-box;
+}
 
 nav ul {
+  nav ul {
   list-style: none;
   padding: 0;
   display: flex;
