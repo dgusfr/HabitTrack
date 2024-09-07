@@ -261,3 +261,18 @@ document.addEventListener("DOMContentLoaded", function () {
     Notification.requestPermission();
   }
 });
+function scheduleDailyNotification(habitName, time) {
+  let today = new Date();
+  let scheduledTime = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate(),
+    time.hours,
+    time.minutes
+  );
+
+  setTimeout(function () {
+    sendNotification(habitName);
+    scheduleDailyNotification(habitName, time); // Re-schedule the next day
+  }, scheduledTime.getTime() - today.getTime());
+}
