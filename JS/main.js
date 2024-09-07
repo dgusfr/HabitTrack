@@ -245,3 +245,11 @@ function addHabit(
   habitList.appendChild(newHabit);
   saveHabits();
 }
+function sendNotification(habitName) {
+  if (Notification.permission === "granted") {
+    new Notification("Time for your habit!", {
+      body: `Don't forget to complete your habit: ${habitName}`,
+      icon: "/path/to/icon.png",
+    });
+  }
+}
