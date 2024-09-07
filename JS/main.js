@@ -283,3 +283,8 @@ document.querySelectorAll(".cancel-notification").forEach((button) => {
     updateHabitList();
   });
 });
+function remindAtIntervals(habitName, interval) {
+  setInterval(() => {
+    sendNotification(habitName);
+  }, interval);
+}
