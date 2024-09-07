@@ -276,3 +276,10 @@ function scheduleDailyNotification(habitName, time) {
     scheduleDailyNotification(habitName, time); // Re-schedule the next day
   }, scheduledTime.getTime() - today.getTime());
 }
+document.querySelectorAll(".cancel-notification").forEach((button) => {
+  button.addEventListener("click", function () {
+    const habitId = this.closest("li").getAttribute("data-id");
+    cancelNotification(habitId);
+    updateHabitList();
+  });
+});
